@@ -7,9 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
     "lint": "eslint . --fix",
     "pretty-quick": "npx pretty-quick --staged",
     "prettier": "npx prettier **/*.js --write"
+  },
+  "directories": {
+    "components": "components"
   },
   "repository": {
     "type": "git",
