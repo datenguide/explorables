@@ -1,21 +1,19 @@
 {
   "name": "@datenguide/explorables",
-  "version": "1.0.1",
+  "version": "0.0.1",
   "description": "Cookbook to make statistics experienced haptically, visually and playfully.  Coming soon.",
-  "main": "index.js",
+  "module": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "build": "webpack --mode production --display-modules",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
     "release:major": "npm version major && npm publish",
-    "lint": "eslint . --fix",
+    "lint": "eslint . --ignore-pattern 'dist' --fix",
     "pretty-quick": "npx pretty-quick --staged",
     "prettier": "npx prettier **/*.js --write"
-  },
-  "directories": {
-    "components": "components"
   },
   "repository": {
     "type": "git",
@@ -29,17 +27,23 @@
   },
   "homepage": "https://github.com/datenguide/explorable_explanations#readme",
   "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
     "dotenv": "^8.2.0",
     "react-map-gl": "^5.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
-    "babel-loader": "^8.1.0",
     "babel-eslint": "10.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
     "eslint": "6.8.0",
     "eslint-config-airbnb-base": "14.1.0",
     "eslint-config-prettier": "6.10.1",
@@ -54,7 +58,8 @@
     "eslint-plugin-standard": "^4.0.1",
     "husky": "4.2.5",
     "prettier": "2.0.4",
-    "pretty-quick": "2.0.1"
+    "pretty-quick": "2.0.1",
+    "webpack-cli": "^3.3.11"
   },
   "eslintConfig": {
     "parser": "babel-eslint",
