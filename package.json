@@ -1,5 +1,5 @@
 {
-  "name": "explorable_explanations",
+  "name": "@datenguide/explorables",
   "version": "1.0.1",
   "description": "Cookbook to make statistics experienced haptically, visually and playfully.  Coming soon.",
   "main": "index.js",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/datenguide/explorable_explanations.git"
+    "url": "git+https://github.com/datenguide/explorables.git"
   },
   "keywords": [],
   "author": "",
