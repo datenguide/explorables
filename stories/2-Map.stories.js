@@ -1,12 +1,11 @@
-import React from 'react';
-import {
-    action
-} from '@storybook/addon-actions';
-import Map from '../components/map';
+import React from 'react'
+import Map from '../components/map'
 
 export default {
-    title: 'Map',
-    component: Map,
-};
+  title: 'Map',
+  component: Map,
+}
 
-export const map = () => <Map mapboxApiAccessToken={process.env.STORYBOOK_MAPBOX_TOKEN} />;
+export const map = () => (
+  <Map mapboxApiAccessToken={process.env.STORYBOOK_MAPBOX_TOKEN} />
+)

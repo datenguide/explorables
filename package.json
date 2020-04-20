@@ -38,11 +38,13 @@
     "eslint-config-airbnb-base": "14.1.0",
     "eslint-config-prettier": "6.10.1",
     "eslint-config-standard": "^14.1.1",
+    "eslint-config-standard-react": "^9.2.0",
     "eslint-plugin-babel": "5.3.0",
     "eslint-plugin-import": "2.20.2",
     "eslint-plugin-jest": "23.8.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-standard": "^4.0.1",
     "husky": "4.2.5",
     "eslint-config-standard": "^14.1.1",
@@ -54,6 +56,12 @@
   "eslintConfig": {
     "parser": "babel-eslint",
     "rules": {
+      "react/prop-types": 0,
+      "react/react-in-jsx-scope": 0,
+      "jsx-quotes": [
+        "error",
+        "prefer-double"
+      ],
       "no-console": [
         "error",
         {
@@ -64,16 +72,23 @@
         }
       ]
     },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
     "env": {
       "jest/globals": true,
-      "node": true
+      "browser": true
     },
     "plugins": [
       "jest"
     ],
     "extends": [
       "standard",
-      "prettier"
+      "standard-react",
+      "prettier",
+      "prettier/react"
     ]
   },
   "prettier": {
