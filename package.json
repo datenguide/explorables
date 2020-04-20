@@ -19,7 +19,10 @@
     "url": "https://github.com/datenguide/explorable_explanations/issues"
   },
   "homepage": "https://github.com/datenguide/explorable_explanations#readme",
-  "dependencies": {},
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "react-map-gl": "^5.2.3"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@storybook/addon-actions": "^5.3.18",
