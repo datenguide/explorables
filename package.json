@@ -1,6 +1,6 @@
 {
   "name": "explorable_explanations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cookbook to make statistics experienced haptically, visually and playfully.  Coming soon.",
   "main": "index.js",
   "scripts": {
@@ -53,9 +53,6 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-standard": "^4.0.1",
     "husky": "4.2.5",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
     "prettier": "2.0.4",
     "pretty-quick": "2.0.1"
   },
