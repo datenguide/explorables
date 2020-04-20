@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint . --fix",
+    "pretty-quick": "npx pretty-quick --staged",
+    "prettier": "npx prettier **/*.js --write"
   },
   "repository": {
     "type": "git",
@@ -29,6 +32,59 @@
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
-    "babel-loader": "^8.1.0"
+    "babel-loader": "^8.1.0",
+    "babel-eslint": "10.1.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.1.0",
+    "eslint-config-prettier": "6.10.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-babel": "5.3.0",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-jest": "23.8.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "4.2.5",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "prettier": "2.0.4",
+    "pretty-quick": "2.0.1"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "rules": {
+      "no-console": [
+        "error",
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+      ]
+    },
+    "env": {
+      "jest/globals": true,
+      "node": true
+    },
+    "plugins": [
+      "jest"
+    ],
+    "extends": [
+      "standard",
+      "prettier"
+    ]
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn lint",
+      "pre-commit": "yarn pretty-quick"
+    }
   }
 }
