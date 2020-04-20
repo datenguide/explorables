@@ -9,6 +9,4 @@ export default {
     component: Map,
 };
 
-export const map = () => ( <
-    Map / >
-);
+export const map = () => <Map mapboxApiAccessToken={process.env.STORYBOOK_MAPBOX_TOKEN} />;
