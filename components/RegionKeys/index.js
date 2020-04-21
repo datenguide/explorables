@@ -99,8 +99,8 @@ const RegionKeys = () => {
               backgroundColor: '#c3e5f1',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '10px',
-              height: '150px',
+              padding: '20px',
+              height: '200px',
             }}
           >
             {renderNutsHierarchy(nutsHierarchy)}
