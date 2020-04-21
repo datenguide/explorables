@@ -18,22 +18,28 @@ const mapNavItems = [
   {
     id: 'nuts-1',
     title: 'Bundesländer',
+    path: '/nrw_bundesland.geojson',
   },
   {
     id: 'nuts-2',
     title: 'Statistische Regionen',
+    path: '/nrw_bundesland.geojson',
   },
   {
     id: 'nuts-3',
     title: 'Landkreise',
+    path: '/nrw_landkreise.geojson',
   },
   {
     id: 'lau',
     title: 'Gemeinden',
+    path: '/nrw_gemeinden.geojson',
   },
 ]
 
 function Map({ mapboxApiAccessToken }) {
+  const [data, setData] = useState({})
+  const [currentLayer, setCurrentLayer] = useState(mapNavItems[0])
   const [viewport, setViewport] = useState({
     width: '100%',
     height: 400,
@@ -44,17 +50,15 @@ function Map({ mapboxApiAccessToken }) {
     mapboxApiAccessToken,
   })
 
-  const [data, setData] = useState({})
-
-  const [currentLayer, setCurrentLayer] = useState(mapNavItems[0].id)
+  function loadGeojson(path) {
+    json(path, (error, response) => {
+      if (!error) setData(response)
+    })
+  }
 
   useEffect(() => {
     // code to run on component mount
-    json('/nrw_bundesland.geojson', (error, response) => {
-      if (!error) {
-        setData(response)
-      }
-    })
+    loadGeojson(currentLayer.path)
   }, [])
 
   return (
@@ -62,9 +66,9 @@ function Map({ mapboxApiAccessToken }) {
       <MapNav
         items={mapNavItems}
         currentItem={currentLayer}
-        onItemClick={(id) => {
-          setCurrentLayer(id)
-          console.log(currentLayer)
+        onItemClick={(item) => {
+          setCurrentLayer(item)
+          loadGeojson(item.path)
         }}
       />
       <Source type="geojson" data={data}>

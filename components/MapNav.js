@@ -5,15 +5,15 @@ import './MapNav.css'
 function MapNav({ items, currentItem, onItemClick }) {
   return (
     <div className="map-nav">
-      {items.map(({ id, title }) => {
-        const buttonClass = classNames({ active: currentItem === id })
+      {items.map((item) => {
+        const buttonClass = classNames({ active: currentItem === item })
         return (
           <button
-            key={id}
+            key={item.id}
             className={buttonClass}
-            onClick={() => onItemClick(id)}
+            onClick={() => onItemClick(item)}
           >
-            {title}
+            {item.title}
           </button>
         )
       })}
