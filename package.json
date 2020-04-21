@@ -1,6 +1,6 @@
 {
   "name": "@datenguide/explorables",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cookbook to make statistics experienced haptically, visually and playfully.  Coming soon.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
