@@ -1,5 +1,5 @@
-// import Map from '../components/map'
 import { Button } from '@storybook/react/demo'
 import Map from './Map'
+import RegionKeys from './RegionKeys'
 
-export { Button, Map }
+export { Button, Map, RegionKeys }
