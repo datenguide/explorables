@@ -1,0 +1,9 @@
+.map-nav {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+.active {
+  border: 2px solid red;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { StaticMap, Source, Layer } from 'react-map-gl'
 import { json } from 'd3-request'
+import MapNav from './MapNav'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
 
@@ -12,6 +13,25 @@ const regionLayer = {
     'fill-opacity': 0.4,
   },
 }
+
+const mapNavItems = [
+  {
+    id: 'nuts-1',
+    title: 'Bundesländer',
+  },
+  {
+    id: 'nuts-2',
+    title: 'Statistische Regionen',
+  },
+  {
+    id: 'nuts-3',
+    title: 'Landkreise',
+  },
+  {
+    id: 'lau',
+    title: 'Gemeinden',
+  },
+]
 
 function Map({ mapboxApiAccessToken }) {
   const [viewport, setViewport] = useState({
@@ -26,6 +46,8 @@ function Map({ mapboxApiAccessToken }) {
 
   const [data, setData] = useState({})
 
+  const [currentLayer, setCurrentLayer] = useState(mapNavItems[0].id)
+
   useEffect(() => {
     // code to run on component mount
     json('/nrw_bundesland.geojson', (error, response) => {
@@ -37,6 +59,14 @@ function Map({ mapboxApiAccessToken }) {
 
   return (
     <StaticMap {...viewport} onViewportChange={setViewport}>
+      <MapNav
+        items={mapNavItems}
+        currentItem={currentLayer}
+        onItemClick={(id) => {
+          setCurrentLayer(id)
+          console.log(currentLayer)
+        }}
+      />
       <Source type="geojson" data={data}>
         <Layer {...regionLayer} />
       </Source>
