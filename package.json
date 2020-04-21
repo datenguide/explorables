@@ -16,9 +16,10 @@
     "prettier": "npx prettier **/*.js --write"
   },
   "module": "dist/index.js",
-  "directories": {
-    "dist": "dist"
-  },
+  "files": [
+    "dist",
+    "data"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/datenguide/explorables.git"
