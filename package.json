@@ -64,6 +64,8 @@
     "husky": "4.2.5",
     "prettier": "2.0.4",
     "pretty-quick": "2.0.1",
+    "sass": "^1.26.3",
+    "sass-loader": "^8.0.2",
     "webpack-cli": "^3.3.11"
   },
   "eslintConfig": {
