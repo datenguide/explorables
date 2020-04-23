@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import { Source, Layer } from 'react-map-gl'
 import { json } from 'd3-request'
 import { feature } from 'topojson'
@@ -14,19 +14,17 @@ const layerDefaults = {
 }
 
 const TopojsonLayer = ({ path, layerConfig }) => {
-  const [data, setData] = useState({})
+  const [data, setData] = useState(null)
   const layer = { ...layerDefaults, ...layerConfig }
 
-  function loadGeojson(path) {
+  useLayoutEffect(() => {
     json(path, (error, data) => {
       if (!error) {
         const features = feature(data, data.objects.regions)
         setData(features)
       }
     })
-  }
-
-  loadGeojson(path)
+  }, [])
 
   return (
     <Source type="geojson" data={data}>
