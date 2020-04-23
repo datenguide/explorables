@@ -1,30 +1,40 @@
-import React, { useState, useEffect } from 'react'
-import { StaticMap, Source, Layer } from 'react-map-gl'
-import { json } from 'd3-request'
-import { feature } from 'topojson'
+import React, { useState } from 'react'
+import { StaticMap } from 'react-map-gl'
 import MapNav from './MapNav'
+import ShapeLayer from './ShapeLayer'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
-
-const regionLayer = {
-  type: 'fill',
-  source: 'geojson',
-  paint: {
-    'fill-color': '#ff0000',
-    'fill-opacity': 0.4,
-  },
-}
 
 const mapNavItems = [
   {
     id: 'nuts-1',
     title: 'Bundesländer',
     path: 'bundeslaender.json',
+    layerConfig: {
+      type: 'fill',
+      source: 'geojson',
+      filter: ['==', 'name', 'Rheinland-Pfalz'],
+      paint: {
+        'fill-color': '#0000ff',
+        'fill-opacity': 0.4,
+        'fill-outline-color': '#ff0000',
+      },
+    },
   },
   {
     id: 'nuts-2',
     title: 'Statistische Regionen',
-    path: '/nrw_regierungsbezirke.json',
+    path: 'bundeslaender.json',
+    layerConfig: {
+      type: 'fill',
+      source: 'geojson',
+      filter: ['==', 'name', 'Nordrhein-Westfalen'],
+      paint: {
+        'fill-color': '#ff0000',
+        'fill-opacity': 0.4,
+        'fill-outline-color': '#ff0000',
+      },
+    },
   },
   {
     id: 'nuts-3',
@@ -39,7 +49,6 @@ const mapNavItems = [
 ]
 
 function Map({ mapboxApiAccessToken }) {
-  const [data, setData] = useState({})
   const [currentLayer, setCurrentLayer] = useState(mapNavItems[0])
   const [viewport, setViewport] = useState({
     width: '100%',
@@ -51,20 +60,6 @@ function Map({ mapboxApiAccessToken }) {
     mapboxApiAccessToken,
   })
 
-  function loadGeojson(path) {
-    json(path, (error, data) => {
-      if (!error) {
-        const features = feature(data, data.objects.regions)
-        setData(features)
-      }
-    })
-  }
-
-  useEffect(() => {
-    // code to run on component mount
-    loadGeojson(currentLayer.path)
-  }, [])
-
   return (
     <StaticMap {...viewport} onViewportChange={setViewport}>
       <MapNav
@@ -72,12 +67,10 @@ function Map({ mapboxApiAccessToken }) {
         currentItem={currentLayer}
         onItemClick={(item) => {
           setCurrentLayer(item)
-          loadGeojson(item.path)
         }}
       />
-      <Source type="geojson" data={data}>
-        <Layer {...regionLayer} />
-      </Source>
+      <ShapeLayer {...mapNavItems[0]} />
+      <ShapeLayer {...mapNavItems[1]} />
     </StaticMap>
   )
 }
