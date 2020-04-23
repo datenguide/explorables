@@ -48,8 +48,21 @@ const mapNavItems = [
   },
 ]
 
+const layers = {
+  'nuts-1': [
+    <ShapeLayer key="foo" {...mapNavItems[0]} />,
+    <ShapeLayer key="other" {...mapNavItems[1]} />,
+  ],
+  'nuts-2': [
+    <ShapeLayer key="goof" {...mapNavItems[0]} />,
+    <ShapeLayer key="doop" {...mapNavItems[2]} />,
+  ],
+  'nuts-3': [<ShapeLayer key="bar" {...mapNavItems[2]} />],
+  lau: [<ShapeLayer key="baz" {...mapNavItems[3]} />],
+}
+
 function Map({ mapboxApiAccessToken }) {
-  const [currentLayer, setCurrentLayer] = useState(mapNavItems[0])
+  const [currentLevel, setCurrentLevel] = useState(mapNavItems[0])
   const [viewport, setViewport] = useState({
     width: '100%',
     height: 400,
@@ -64,13 +77,12 @@ function Map({ mapboxApiAccessToken }) {
     <StaticMap {...viewport} onViewportChange={setViewport}>
       <MapNav
         items={mapNavItems}
-        currentItem={currentLayer}
+        currentItem={currentLevel}
         onItemClick={(item) => {
-          setCurrentLayer(item)
+          setCurrentLevel(item)
         }}
       />
-      <ShapeLayer {...mapNavItems[0]} />
-      <ShapeLayer {...mapNavItems[1]} />
+      {layers[currentLevel.id]}
     </StaticMap>
   )
 }
