@@ -36,7 +36,8 @@
     "@babel/preset-react": "^7.9.4",
     "classnames": "^2.2.6",
     "d3-request": "^1.0.6",
-    "react-map-gl": "^5.2.3"
+    "react-map-gl": "^5.2.3",
+    "topojson": "^3.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { StaticMap, Source, Layer } from 'react-map-gl'
 import { json } from 'd3-request'
+import { feature } from 'topojson'
 import MapNav from './MapNav'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -18,22 +19,22 @@ const mapNavItems = [
   {
     id: 'nuts-1',
     title: 'Bundesländer',
-    path: '/nrw_bundesland.geojson',
+    path: 'bundeslaender.json',
   },
   {
     id: 'nuts-2',
     title: 'Statistische Regionen',
-    path: '/nrw_bundesland.geojson',
+    path: '/nrw_regierungsbezirke.json',
   },
   {
     id: 'nuts-3',
     title: 'Landkreise',
-    path: '/nrw_landkreise.geojson',
+    path: '/nrw_landkreise.json',
   },
   {
     id: 'lau',
     title: 'Gemeinden',
-    path: '/nrw_gemeinden.geojson',
+    path: '/nrw_gemeinden.json',
   },
 ]
 
@@ -51,8 +52,11 @@ function Map({ mapboxApiAccessToken }) {
   })
 
   function loadGeojson(path) {
-    json(path, (error, response) => {
-      if (!error) setData(response)
+    json(path, (error, data) => {
+      if (!error) {
+        const features = feature(data, data.objects.regions)
+        setData(features)
+      }
     })
   }
 
