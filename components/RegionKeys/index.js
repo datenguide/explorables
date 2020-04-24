@@ -20,7 +20,8 @@ const RegionKeys = () => {
   return (
     <ThemeProvider theme={theme}>
       <Grid container spacing={3} className={styles.root}>
-        <Grid item xs={12}>
+        <Grid item xs={4} />
+        <Grid item xs={8}>
           <RegionSelect onSelect={handleSelect} />
         </Grid>
         <Grid item xs={4} />
