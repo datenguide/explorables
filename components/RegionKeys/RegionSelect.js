@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import searchRegion from '../../data/regions'
 
 const RegionSelect = ({ onSelect }) => {
-  const [open, setOpen] = React.useState(false)
-  const [searchValue, setSearchValue] = React.useState('')
-  const [options, setOptions] = React.useState([])
+  const [open, setOpen] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
+  const [options, setOptions] = useState([])
   const loading = open && options.length === 0
 
-  React.useEffect(() => {
+  useEffect(() => {
     let active = true
 
     if (!loading) {
@@ -30,11 +30,16 @@ const RegionSelect = ({ onSelect }) => {
     }
   }, [loading])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!open) {
       setOptions([])
     }
   }, [open])
+
+  useEffect(() => {
+    // pre-select value for testing TODO move to storybook?
+    onSelect({ value: '15083323', name: '15083323 - Ingersleben' })
+  }, [])
 
   const handleInputChange = (event) => {
     setSearchValue(event.target.value)

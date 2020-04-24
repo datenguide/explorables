@@ -1,41 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import regions from '@datenguide/metadata'
 
 import Box from '@material-ui/core/Box'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
-
-const NUTS_LEVELS = [2, 3, 5, 8]
-
-const NUTS_DESCRIPTIONS = [
-  'Bundesland',
-  'Regierungsbezirk',
-  'Kreis',
-  'Gemeinde',
-]
-
-export const getNutsHierarchy = (region) => {
-  if (!region) {
-    return []
-  }
-  const nutsHierarchy = []
-  const regionId = region.value
-  let i = 0
-  while (NUTS_LEVELS[i] <= regionId.length) {
-    const levelId = regionId.substring(0, NUTS_LEVELS[i])
-    nutsHierarchy.push({
-      id: levelId,
-      nuts: i + 1,
-      name: regions[levelId] && regions[levelId].name,
-      nutsDescription: NUTS_DESCRIPTIONS[i],
-    })
-    i++
-  }
-  return nutsHierarchy
-}
+import { getNutsHierarchy } from '../../lib/nutsFormatting'
 
 const renderNutsHierarchy = (n) => {
   const result = []

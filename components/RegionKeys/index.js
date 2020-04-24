@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import theme from '../../lib/muiTheme'
 import RegionSelect from './RegionSelect'
 import Grid from '@material-ui/core/Grid'
-import { getNutsHierarchy } from './RegionCards'
+import { getNutsHierarchy, withNutsSpacing } from '../../lib/nutsFormatting'
 
 import styles from './styles.scss'
 
@@ -21,25 +21,28 @@ const RegionKeys = () => {
     <ThemeProvider theme={theme}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Typography>Suche nach einer Region:</Typography>
-        </Grid>
-        <Grid item xs={12}>
           <RegionSelect onSelect={handleSelect} />
         </Grid>
         <Grid item xs={12}>
           {/* <RegionCards region={region} /> */}
           <Typography variant="h1" classes={{ h1: styles.title }}>
-            {region && region.value}
+            {withNutsSpacing(region).map((part) => (
+              <span className={styles.idPart} key={part}>
+                {part}
+              </span>
+            ))}
           </Typography>
-          {getNutsHierarchy(region).map((parts) => (
-            <div key={parts.id}>
+        </Grid>
+        {getNutsHierarchy(region).map((parts, index) => (
+          <Grid key={parts.id} item xs={3}>
+            <div className={styles.nutsHierarchy}>
               <Typography variant="h5">{parts.id}</Typography>
               <Typography variant="h6">{parts.name}</Typography>
-              <Typography variant="caption">NUTS {parts.nuts}</Typography>
+              <Typography variant="caption">NUTS {parts.nuts}: </Typography>
               <Typography variant="caption">{parts.nutsDescription}</Typography>
             </div>
-          ))}
-        </Grid>
+          </Grid>
+        ))}
       </Grid>
     </ThemeProvider>
   )
