@@ -6,9 +6,9 @@ import Typography from '@material-ui/core/Typography'
 import theme from '../../lib/muiTheme'
 import RegionSelect from './RegionSelect'
 import Grid from '@material-ui/core/Grid'
-import RegionCards from './RegionCards'
+import { getNutsHierarchy } from './RegionCards'
 
-// import styles from './styles.scss'
+import styles from './styles.scss'
 
 const RegionKeys = () => {
   const [region, setRegion] = useState(null)
@@ -27,8 +27,18 @@ const RegionKeys = () => {
           <RegionSelect onSelect={handleSelect} />
         </Grid>
         <Grid item xs={12}>
-          <RegionCards region={region} />
-          <h1>123 123 123 123</h1>
+          {/* <RegionCards region={region} /> */}
+          <Typography variant="h1" classes={{ h1: styles.title }}>
+            {region && region.value}
+          </Typography>
+          {getNutsHierarchy(region).map((parts) => (
+            <div key={parts.id}>
+              <Typography variant="h5">{parts.id}</Typography>
+              <Typography variant="h6">{parts.name}</Typography>
+              <Typography variant="caption">NUTS {parts.nuts}</Typography>
+              <Typography variant="caption">{parts.nutsDescription}</Typography>
+            </div>
+          ))}
         </Grid>
       </Grid>
     </ThemeProvider>

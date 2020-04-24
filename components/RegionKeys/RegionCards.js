@@ -17,7 +17,7 @@ const NUTS_DESCRIPTIONS = [
   'Gemeinde',
 ]
 
-const getNutsHierarchy = (region) => {
+export const getNutsHierarchy = (region) => {
   if (!region) {
     return []
   }
