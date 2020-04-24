@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { StaticMap } from 'react-map-gl'
 import MapNav from './MapNav'
+import MapTooltip from './MapTooltip'
 import ShapeLayer from './ShapeLayer'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -43,12 +44,10 @@ const mapNavItems = [
   {
     id: 'nuts3',
     title: 'Landkreise',
-    path: '/nrw_landkreise.json',
   },
   {
     id: 'lau',
     title: 'Gemeinden',
-    path: '/nrw_gemeinden.json',
   },
 ]
 
@@ -66,6 +65,7 @@ function Map({ mapboxApiAccessToken }) {
 
   return (
     <StaticMap {...viewport} onViewportChange={setViewport}>
+      <MapTooltip lonLat={[7.405, 51.509]}>You are here!</MapTooltip>
       <MapNav
         items={mapNavItems}
         currentItem={level}
