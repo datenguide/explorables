@@ -36,10 +36,10 @@ const RegionSelect = ({ onSelect }) => {
     }
   }, [open])
 
-  useEffect(() => {
-    // pre-select value for testing TODO move to storybook?
-    onSelect({ value: '15083323', name: '15083323 - Ingersleben' })
-  }, [])
+  // useEffect(() => {
+  //   // pre-select value for testing TODO move to storybook?
+  //   onSelect({ value: '15083323', name: '15083323 - Ingersleben' })
+  // }, [])
 
   const handleInputChange = (event) => {
     setSearchValue(event.target.value)
@@ -52,7 +52,7 @@ const RegionSelect = ({ onSelect }) => {
   return (
     <Autocomplete
       id="region-select"
-      style={{ width: 800 }}
+      style={{ width: 800, marginBottom: '20px' }}
       size="small"
       open={open}
       onOpen={() => {

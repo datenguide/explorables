@@ -19,29 +19,35 @@ const RegionKeys = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} className={styles.root}>
         <Grid item xs={12}>
           <RegionSelect onSelect={handleSelect} />
         </Grid>
-        <Grid item xs={12}>
-          {/* <RegionCards region={region} /> */}
-          <Typography variant="h1" classes={{ h1: styles.title }}>
-            {withNutsSpacing(region).map((part) => (
-              <span className={styles.idPart} key={part}>
-                {part}
-              </span>
-            ))}
-          </Typography>
-        </Grid>
-        {getNutsHierarchy(region).map((parts, index) => (
-          <Grid key={parts.id} item xs={3}>
-            <div className={styles.nutsHierarchy}>
-              <Typography variant="h5">{parts.id}</Typography>
-              <Typography variant="h6">{parts.name}</Typography>
-              <Typography variant="caption">NUTS {parts.nuts}: </Typography>
-              <Typography variant="caption">{parts.nutsDescription}</Typography>
-            </div>
+        <Grid item xs={4} />
+        {withNutsSpacing(region).map((part) => (
+          <Grid key={part} xs={2}>
+            <Typography variant="h1" classes={{ h1: styles.title }}>
+              {part}
+            </Typography>
           </Grid>
+        ))}
+        {getNutsHierarchy(region).map((parts, index) => (
+          <>
+            <Grid item xs={4}>
+              <div className={styles.nutsHierarchyLabel}>
+                <Typography variant="h6">{parts.name}</Typography>
+                <Typography variant="caption">
+                  {parts.nutsDescription}
+                </Typography>
+              </div>
+            </Grid>
+            <Grid item xs={2 + index * 2}>
+              <div className={styles.nutsHierarchyId}>
+                <Typography variant="h5">{parts.id}</Typography>
+              </div>
+            </Grid>
+            <Grid item xs={12 - index} />
+          </>
         ))}
       </Grid>
     </ThemeProvider>
