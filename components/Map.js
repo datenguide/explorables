@@ -5,39 +5,43 @@ import ShapeLayer from './ShapeLayer'
 
 import 'mapbox-gl/dist/mapbox-gl.css'
 
+const paths = {
+  nuts1: 'bundeslaender.json',
+  nuts2: 'nrw_regierungsbezirke.json',
+  nuts3: 'nrw_landkreise.json',
+  lau: 'nrw_gemeinden.json',
+}
+
+const layerOptions = {
+  nrw: {
+    filter: ['==', 'name', 'Nordrhein-Westfalen'],
+    paint: {
+      'fill-color': '#ff0000',
+      'fill-opacity': 0.4,
+      'fill-outline-color': '#ffffff',
+    },
+  },
+  states: {
+    filter: ['!=', 'name', 'Nordrhein-Westfalen'],
+    paint: {
+      'fill-color': '#0000ff',
+      'fill-opacity': 0.2,
+      'fill-outline-color': '#ffffff',
+    },
+  },
+}
+
 const mapNavItems = [
   {
-    id: 'nuts-1',
+    id: 'nuts1',
     title: 'Bundesländer',
-    path: 'bundeslaender.json',
-    layerConfig: {
-      type: 'fill',
-      source: 'geojson',
-      filter: ['==', 'name', 'Rheinland-Pfalz'],
-      paint: {
-        'fill-color': '#0000ff',
-        'fill-opacity': 0.4,
-        'fill-outline-color': '#ff0000',
-      },
-    },
   },
   {
-    id: 'nuts-2',
+    id: 'nuts2',
     title: 'Statistische Regionen',
-    path: 'bundeslaender.json',
-    layerConfig: {
-      type: 'fill',
-      source: 'geojson',
-      filter: ['==', 'name', 'Nordrhein-Westfalen'],
-      paint: {
-        'fill-color': '#ff0000',
-        'fill-opacity': 0.4,
-        'fill-outline-color': '#ff0000',
-      },
-    },
   },
   {
-    id: 'nuts-3',
+    id: 'nuts3',
     title: 'Landkreise',
     path: '/nrw_landkreise.json',
   },
@@ -48,21 +52,8 @@ const mapNavItems = [
   },
 ]
 
-const layers = {
-  'nuts-1': [
-    <ShapeLayer key="foo" {...mapNavItems[0]} />,
-    <ShapeLayer key="other" {...mapNavItems[1]} />,
-  ],
-  'nuts-2': [
-    <ShapeLayer key="goof" {...mapNavItems[0]} />,
-    <ShapeLayer key="doop" {...mapNavItems[2]} />,
-  ],
-  'nuts-3': [<ShapeLayer key="bar" {...mapNavItems[2]} />],
-  lau: [<ShapeLayer key="baz" {...mapNavItems[3]} />],
-}
-
 function Map({ mapboxApiAccessToken }) {
-  const [currentLevel, setCurrentLevel] = useState(mapNavItems[0])
+  const [level, setlevel] = useState(mapNavItems[0])
   const [viewport, setViewport] = useState({
     width: '100%',
     height: 400,
@@ -77,12 +68,24 @@ function Map({ mapboxApiAccessToken }) {
     <StaticMap {...viewport} onViewportChange={setViewport}>
       <MapNav
         items={mapNavItems}
-        currentItem={currentLevel}
+        currentItem={level}
         onItemClick={(item) => {
-          setCurrentLevel(item)
+          setlevel(item)
         }}
       />
-      {layers[currentLevel.id]}
+      <ShapeLayer
+        path={paths.nuts1}
+        options={layerOptions.nrw}
+        hidden={level.id !== 'nuts1'}
+      />
+      <ShapeLayer
+        path={paths.nuts1}
+        options={layerOptions.states}
+        hidden={level.id !== 'nuts1'}
+      />
+      <ShapeLayer path={paths.nuts2} hidden={level.id !== 'nuts2'} />
+      <ShapeLayer path={paths.nuts3} hidden={level.id !== 'nuts3'} />
+      <ShapeLayer path={paths.lau} hidden={level.id !== 'lau'} />
     </StaticMap>
   )
 }
