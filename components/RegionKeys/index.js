@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import FlipNumbers from 'react-flip-numbers'
 
 import { ThemeProvider } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -27,9 +28,15 @@ const RegionKeys = () => {
         <Grid item xs={4} />
         {withNutsSpacing(region).map((part) => (
           <Grid key={part} xs={2}>
-            <Typography variant="h1" classes={{ h1: styles.title }}>
-              {part}
-            </Typography>
+            <FlipNumbers
+              height={40}
+              width={40}
+              color="red"
+              background="white"
+              play
+              perspective={100}
+              numbers={part}
+            />
           </Grid>
         ))}
         {getNutsHierarchy(region).map((parts, index) => (
