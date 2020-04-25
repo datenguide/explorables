@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { ThemeProvider } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
-import theme from '../../lib/muiTheme'
+import theme from '../../lib/styles/muiTheme'
 import RegionSelect from './RegionSelect'
 import Grid from '@material-ui/core/Grid'
 import { getNutsHierarchy, withNutsSpacing } from '../../lib/nutsFormatting'
