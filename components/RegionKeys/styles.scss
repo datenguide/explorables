@@ -1,20 +1,22 @@
+@import 'lib/styles/mui-theme.scss';
+
 .root {
-  padding: 50px;
+  padding: $spacing-4;
 }
 
 .title {
-  font-size: 80px;
+  font-size: $typography-h1-fontSize;
   color: black;
   font-weight: bold;
-  padding-bottom: 20px;
+  padding-bottom: $spacing-4;
 }
 
 .idPart {
-  padding-right: 80px;
+  padding-right: $spacing-10;
 }
 
 .nutsHierarchyId {
-  padding: 10px;
+  padding: $spacing-1;
   border-bottom: 1px red solid;
   border-left: 1px red solid;
   border-right: 1px red solid;
