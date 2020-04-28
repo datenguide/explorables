@@ -13,7 +13,7 @@ const layerDefaults = {
   },
 }
 
-const TopojsonLayer = ({ path, options, hidden = false }) => {
+const ShapeLayer = ({ path, options, hidden = false }) => {
   const [layerStyle, setLayerStyle] = useState({
     ...layerDefaults,
     ...options,
@@ -47,4 +47,4 @@ const TopojsonLayer = ({ path, options, hidden = false }) => {
   )
 }
 
-export default TopojsonLayer
+export default ShapeLayer
