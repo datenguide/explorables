@@ -12,6 +12,7 @@ module.exports = {
   },
   externals: {
     react: 'react',
+    'react-map-gl': 'react-map-gl',
   },
   module: {
     rules: [
