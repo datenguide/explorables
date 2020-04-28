@@ -41,12 +41,13 @@
     "@material-ui/styles": "^4.9.10",
     "@sindresorhus/slugify": "^0.11.0",
     "classnames": "^2.2.6",
+    "clsx": "^1.1.0",
     "d3-request": "^1.0.6",
     "flexsearch": "^0.6.32",
     "isomorphic-fetch": "^2.2.1",
     "react": "^16.13.1",
     "react-flip-numbers": "^3.0.5",
-    "react-map-gl": "^5.2.3",
+    "react-map-gl": "^5.2.5",
     "topojson": "^3.0.2"
   },
   "devDependencies": {
@@ -54,6 +55,7 @@
     "@babel/node": "^7.8.7",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
     "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
@@ -83,6 +85,11 @@
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
     "webpack-cli": "^3.3.11"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-map-gl": "^5.2.5"
   },
   "eslintConfig": {
     "parser": "babel-eslint",

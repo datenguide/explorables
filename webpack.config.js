@@ -9,10 +9,29 @@ module.exports = {
     filename: 'index.js',
     library: pkg.name,
     libraryTarget: 'umd',
+    umdNamedDefine: true,
   },
   externals: {
-    react: 'react',
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'React',
+      root: 'React',
+    },
+    'react-dom': {
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      amd: 'ReactDOM',
+      root: 'ReactDOM',
+    },
+    'react-map-gl': {
+      commonjs: 'react-map-gl',
+      commonjs2: 'react-map-gl',
+      amd: 'ReactMapGL',
+      root: 'ReactMapGL',
+    },
   },
+  devtool: 'cheap-module-source-map',
   module: {
     rules: [
       {
