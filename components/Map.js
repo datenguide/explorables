@@ -51,7 +51,7 @@ const mapNavItems = [
   },
 ]
 
-function Map({ mapboxApiAccessToken }) {
+function Map({ mapboxApiAccessToken, rootPath }) {
   const [level, setlevel] = useState(mapNavItems[0])
   const [viewport, setViewport] = useState({
     width: '100%',
@@ -74,18 +74,27 @@ function Map({ mapboxApiAccessToken }) {
         }}
       />
       <ShapeLayer
-        path={paths.nuts1}
+        path={`${rootPath}/${paths.nuts1}`}
         options={layerOptions.nrw}
         hidden={level.id !== 'nuts1'}
       />
       <ShapeLayer
-        path={paths.nuts1}
+        path={`${rootPath}/${paths.nuts1}`}
         options={layerOptions.states}
         hidden={level.id !== 'nuts1'}
       />
-      <ShapeLayer path={paths.nuts2} hidden={level.id !== 'nuts2'} />
-      <ShapeLayer path={paths.nuts3} hidden={level.id !== 'nuts3'} />
-      <ShapeLayer path={paths.lau} hidden={level.id !== 'lau'} />
+      <ShapeLayer
+        path={`${rootPath}/${paths.nuts2}`}
+        hidden={level.id !== 'nuts2'}
+      />
+      <ShapeLayer
+        path={`${rootPath}/${paths.nuts3}`}
+        hidden={level.id !== 'nuts3'}
+      />
+      <ShapeLayer
+        path={`${rootPath}/${paths.lau}`}
+        hidden={level.id !== 'lau'}
+      />
     </StaticMap>
   )
 }
