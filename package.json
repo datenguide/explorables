@@ -34,7 +34,7 @@
   "dependencies": {
     "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
-    "classnames": "^2.2.6",
+    "clsx": "^1.1.0",
     "d3-request": "^1.0.6",
     "react-map-gl": "^5.2.3",
     "topojson": "^3.0.2"
