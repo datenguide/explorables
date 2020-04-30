@@ -74,25 +74,25 @@ function Map({ mapboxApiAccessToken, rootPath }) {
         }}
       />
       <ShapeLayer
-        path={`${rootPath}/${paths.nuts1}`}
+        src={`${rootPath}/${paths.nuts1}`}
         options={layerOptions.nrw}
         hidden={level.id !== 'nuts1'}
       />
       <ShapeLayer
-        path={`${rootPath}/${paths.nuts1}`}
+        src={`${rootPath}/${paths.nuts1}`}
         options={layerOptions.states}
         hidden={level.id !== 'nuts1'}
       />
       <ShapeLayer
-        path={`${rootPath}/${paths.nuts2}`}
+        src={`${rootPath}/${paths.nuts2}`}
         hidden={level.id !== 'nuts2'}
       />
       <ShapeLayer
-        path={`${rootPath}/${paths.nuts3}`}
+        src={`${rootPath}/${paths.nuts3}`}
         hidden={level.id !== 'nuts3'}
       />
       <ShapeLayer
-        path={`${rootPath}/${paths.lau}`}
+        src={`${rootPath}/${paths.lau}`}
         hidden={level.id !== 'lau'}
       />
     </StaticMap>

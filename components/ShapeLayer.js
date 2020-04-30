@@ -13,7 +13,7 @@ const layerDefaults = {
   },
 }
 
-const ShapeLayer = ({ path, options, hidden = false }) => {
+const ShapeLayer = ({ src, options, hidden = false }) => {
   const [layerStyle, setLayerStyle] = useState({
     ...layerDefaults,
     ...options,
@@ -23,13 +23,13 @@ const ShapeLayer = ({ path, options, hidden = false }) => {
 
   // Load topojson data:
   useEffect(() => {
-    json(path, (error, data) => {
+    json(src, (error, data) => {
       if (!error) {
         const features = feature(data, data.objects.regions)
         setData(features)
       }
     })
-  }, [path])
+  }, [src])
 
   // Control layer visibility (for smooth transitions):
   useEffect(() => {
