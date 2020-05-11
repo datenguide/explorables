@@ -4,11 +4,11 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import searchRegion from '../../data/regions'
 
-const RegionSelect = ({ onSelect }) => {
+const RegionSelect = ({ onSelect, className }) => {
   const [open, setOpen] = useState(false)
-  const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState(null)
   const [options, setOptions] = useState([])
-  const loading = open && options.length === 0
+  const loading = open //&& options.length === 0
 
   useEffect(() => {
     let active = true
@@ -36,23 +36,25 @@ const RegionSelect = ({ onSelect }) => {
     }
   }, [open])
 
-  // useEffect(() => {
-  //   // pre-select value for testing TODO move to storybook?
-  //   onSelect({ value: '15083323', name: '15083323 - Ingersleben' })
-  // }, [])
+  useEffect(() => {
+    // pre-select value for testing TODO move to storybook?
+    onSelect({ value: '15083323', name: '15083323 - Ingersleben' })
+  }, [])
 
   const handleInputChange = (event) => {
+    console.log('event.target.value', event.target.value)
+
     setSearchValue(event.target.value)
   }
 
   const handleChange = (__, value) => {
     onSelect(value)
+    setSearchValue(null)
   }
 
   return (
     <Autocomplete
       id="region-select"
-      style={{ width: 800, marginBottom: '20px' }}
       size="small"
       open={open}
       onOpen={() => {
@@ -61,6 +63,7 @@ const RegionSelect = ({ onSelect }) => {
       onClose={() => {
         setOpen(false)
       }}
+      className={className}
       onChange={handleChange}
       onInputChange={handleInputChange}
       getOptionSelected={(option, value) => option.name === value.name}
@@ -70,7 +73,7 @@ const RegionSelect = ({ onSelect }) => {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Region auswählen"
+          label="Gemeinde suchen"
           InputProps={{
             ...params.InputProps,
             endAdornment: (
