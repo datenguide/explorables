@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
-import { getAllCommunities } from '../../data/regions'
+import inventory from '../../data/inventory.json'
+import schema from '../../data/schema.json'
 
-const RegionSelect = ({ onSelect, className }) => {
+const statOptions = Object.keys(inventory)
+
+const StatisticSelect = ({ onSelect, className }) => {
   const [options, setOptions] = useState([])
 
-  useEffect(async () => {
-    const loadRegions = async () => {
-      const result = getAllCommunities()
-      setOptions(result)
-    }
-    await loadRegions()
+  useEffect(() => {
+    setOptions(
+      statOptions.map((v) => ({
+        value: v,
+        label: `${v} - ${schema[v].title_de}`,
+      }))
+    )
   }, [])
-
-  // useEffect(() => {
-  //   // pre-select value for testing TODO move to storybook?
-  //   onSelect({ value: '00000000' })
-  // }, [])
 
   const handleChange = (__, value) => {
     onSelect(value)
@@ -31,12 +30,12 @@ const RegionSelect = ({ onSelect, className }) => {
       disableClearable
       onChange={handleChange}
       autoHighlight
-      getOptionLabel={(option) => option.name}
+      getOptionLabel={(option) => option.label}
       options={options}
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Gemeinde auswählen oder suchen"
+          label="Statistik auswählen oder suchen"
           InputProps={{
             ...params.InputProps,
           }}
@@ -46,4 +45,4 @@ const RegionSelect = ({ onSelect, className }) => {
   )
 }
 
-export default RegionSelect
+export default StatisticSelect

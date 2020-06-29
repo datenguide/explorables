@@ -8,7 +8,7 @@ const RegionSelect = ({ onSelect, className }) => {
   const [open, setOpen] = useState(false)
   const [searchValue, setSearchValue] = useState(null)
   const [options, setOptions] = useState([])
-  const loading = open //&& options.length === 0
+  const loading = open // && options.length === 0
 
   useEffect(() => {
     let active = true
@@ -42,8 +42,6 @@ const RegionSelect = ({ onSelect, className }) => {
   }, [])
 
   const handleInputChange = (event) => {
-    console.log('event.target.value', event.target.value)
-
     setSearchValue(event.target.value)
   }
 

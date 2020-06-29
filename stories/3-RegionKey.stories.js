@@ -1,6 +1,6 @@
 import React from 'react'
 import RegionKeys from '../components/RegionKeys'
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs'
+import { withKnobs, boolean } from '@storybook/addon-knobs'
 
 export default {
   title: 'Region Keys',
