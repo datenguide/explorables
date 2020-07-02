@@ -14,22 +14,44 @@ const paths = {
 }
 
 const layerOptions = {
-  nrw: {
-    filter: ['==', 'name', 'Nordrhein-Westfalen'],
-    paint: {
-      'fill-color': '#ff0000',
-      'fill-opacity': 0.4,
-      'fill-outline-color': '#ffffff',
+  nrw: [
+    {
+      filter: ['!=', 'name', 'Nordrhein-Westfalen'],
+      type: 'fill',
+      paint: {
+        'fill-color': '#ffdd00',
+        'fill-opacity': 0.4,
+        'fill-outline-color': '#ffffff',
+      },
     },
-  },
-  states: {
-    filter: ['!=', 'name', 'Nordrhein-Westfalen'],
-    paint: {
-      'fill-color': '#0000ff',
-      'fill-opacity': 0.2,
-      'fill-outline-color': '#ffffff',
+    {
+      filter: ['!=', 'name', 'Nordrhein-Westfalen'],
+      type: 'line',
+      paint: {
+        'line-color': '#ffdd00',
+        'line-opacity': 1,
+        'line-width': 1,
+      },
     },
-  },
+    {
+      filter: ['==', 'name', 'Nordrhein-Westfalen'],
+      type: 'line',
+      paint: {
+        'line-color': '#0000ff',
+        'line-opacity': 1,
+        'line-width': 3,
+      },
+    },
+  ],
+  states: [
+    {
+      paint: {
+        'fill-color': '#0000ff',
+        'fill-opacity': 0.2,
+        'fill-outline-color': '#ffffff',
+      },
+    },
+  ],
 }
 
 const mapNavItems = [
@@ -67,7 +89,10 @@ function MapDemo({ mapboxApiAccessToken, rootPath }) {
       viewport={viewport}
       onViewportChange={setViewport}
     >
-      <MapTooltip lonLat={[7.405, 51.509]}>You are here!</MapTooltip>
+      {level.id === 'nuts2' && (
+        <MapTooltip lonLat={[7.405, 51.509]}>You are here!</MapTooltip>
+      )}
+
       <MapNav
         items={mapNavItems}
         currentItem={level}
@@ -75,16 +100,13 @@ function MapDemo({ mapboxApiAccessToken, rootPath }) {
           setlevel(item)
         }}
       />
+
       <ShapeLayer
         src={paths.nuts1}
         options={layerOptions.nrw}
         hidden={level.id !== 'nuts1'}
       />
-      <ShapeLayer
-        src={paths.nuts1}
-        options={layerOptions.states}
-        hidden={level.id !== 'nuts1'}
-      />
+
       <ShapeLayer src={paths.nuts2} hidden={level.id !== 'nuts2'} />
       <ShapeLayer src={paths.nuts3} hidden={level.id !== 'nuts3'} />
       <ShapeLayer src={paths.lau} hidden={level.id !== 'lau'} />
