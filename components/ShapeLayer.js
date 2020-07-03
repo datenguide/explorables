@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Source, Layer } from 'react-map-gl'
 import { json } from 'd3-request'
 import { feature } from 'topojson'
@@ -26,24 +26,22 @@ const DEFAULTS = {
   },
 }
 
-class ShapeLayer extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = { data: [] }
-  }
-
-  componentDidMount() {
-    json(this.props.src, (error, data) => {
+const ShapeLayer = ({ src, options = DEFAULTS.fill, hidden = false }) => {
+  // Load topojson data:
+  const [data, setData] = useState(null)
+  useEffect(() => {
+    json(src, (error, data) => {
       if (!error) {
-        this.setState({ data: feature(data, data.objects.regions) })
+        const features = feature(data, data.objects.regions)
+        setData(features)
       }
     })
-  }
+  }, [src])
 
-  render() {
-    const { hidden, options = DEFAULTS.fill } = this.props
+  // Use opacity for hiding/showing layers for smoother toggling:
+  const layerOptions = useMemo(() => {
     const layers = Array.isArray(options) ? options : [options]
-    const layerOptions = layers.map(({ type = 'fill', ...options }) => {
+    return layers.map(({ type = 'fill', ...options }) => {
       const opacityProp = `${type}-opacity`
       const layer = { ...DEFAULTS[type], ...options }
       const paint = { ...layer.paint }
@@ -51,17 +49,15 @@ class ShapeLayer extends React.PureComponent {
       layer.paint = paint
       return layer
     })
+  }, [hidden, options])
 
-    return this.state.data ? (
-      <Source type="geojson" data={this.state.data}>
-        {layerOptions.map((options, i) => {
-          return <Layer {...options} key={i} />
-        })}
-      </Source>
-    ) : (
-      ''
-    )
-  }
+  return (
+    <Source type="geojson" data={data}>
+      {layerOptions.map((options, i) => {
+        return <Layer {...options} key={i} />
+      })}
+    </Source>
+  )
 }
 
 export default ShapeLayer
