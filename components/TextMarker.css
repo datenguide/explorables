@@ -1,0 +1,18 @@
+.text-marker {
+  display: block;
+  position: relative;
+}
+
+.text-marker.center {
+  left: -50%;
+  text-align: center;
+}
+
+.text-marker.left {
+  text-align: left;
+}
+
+.text-marker.right {
+  left: -100%;
+  text-align: right;
+}
