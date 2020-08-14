@@ -5,7 +5,6 @@ $grey: #e5e5e5;
 
 .root {
   padding: $spacing-4;
-  background: $grey;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +13,7 @@ $grey: #e5e5e5;
 
 .regionSelect {
   margin-left: 400px;
-  width: 500px;
+  width: 800px;
   margin-bottom: $spacing-4;
 }
 
