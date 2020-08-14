@@ -1,0 +1,68 @@
+@import 'lib/styles/mui-theme.scss';
+
+$red: #f26c6f;
+$grey: #e5e5e5;
+
+.root {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.emptystate {
+  font-family: $typography-h5-fontFamily; // TODO create typography mixin
+  font-size: $typography-subtitle1-fontSize;
+  font-weight: $typography-h5-fontWeight;
+  margin: $spacing-1 0 0 0;
+}
+
+.headingrow {
+  margin-top: $spacing-1;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  padding-bottom: 8px;
+  font-weight: bold;
+}
+
+.headingrowcell {
+  width: 72px;
+  height: 32px;
+  text-align: center;
+  flex: 0 1 auto;
+  font-family: $typography-h5-fontFamily; // TODO create typography mixin
+  font-size: $typography-subtitle1-fontSize;
+  font-weight: $typography-h5-fontWeight;
+}
+
+.dimensionrow {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+}
+
+.dimensionrowcell {
+  width: 72px;
+  height: 32px;
+  text-align: center;
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.filleddot {
+  height: 25px;
+  width: 25px;
+  background-color: $red;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.emptydot {
+  height: 25px;
+  width: 25px;
+  background-color: $grey;
+  border-radius: 50%;
+  display: inline-block;
+}

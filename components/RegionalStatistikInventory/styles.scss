@@ -1,0 +1,80 @@
+@import 'lib/styles/mui-theme.scss';
+
+$red: #f26c6f;
+$grey: #e5e5e5;
+
+.root {
+  padding: 32px;
+}
+
+.title {
+  font-family: $typography-h4-fontFamily; // TODO create typography mixin
+  font-size: $typography-h4-fontSize;
+  font-weight: $typography-h4-fontWeight;
+}
+
+.subtitle {
+  font-family: $typography-h5-fontFamily; // TODO create typography mixin
+  font-size: $typography-h5-fontSize;
+  font-weight: $typography-h5-fontWeight;
+}
+
+.statisticsselect {
+  margin-bottom: 24px;
+}
+
+.measurewrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.measurelevels {
+  display: flex;
+  flex-direction: row;
+}
+
+.combinationswrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.headingrow {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 8px;
+  font-weight: bold;
+}
+
+.headingrowcell {
+  font-family: $typography-h5-fontFamily; // TODO create typography mixin
+  font-size: 14px;
+  font-weight: $typography-h5-fontWeight;
+  width: 64px;
+  align-self: center;
+}
+
+.dimensionrow {
+  display: flex;
+  flex-direction: row;
+}
+
+.dimensionrowcell {
+  width: 64px;
+  align-self: center;
+}
+
+.filleddot {
+  height: 25px;
+  width: 25px;
+  background-color: $red;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.emptydot {
+  height: 25px;
+  width: 25px;
+  background-color: $grey;
+  border-radius: 50%;
+  display: inline-block;
+}

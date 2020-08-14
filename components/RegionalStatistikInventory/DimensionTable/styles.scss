@@ -1,0 +1,39 @@
+@import 'lib/styles/mui-theme.scss';
+
+$red: #f26c6f;
+$grey: #e5e5e5;
+
+.root {
+}
+
+.title {
+  font-family: $typography-h5-fontFamily; // TODO create typography mixin
+  font-size: $typography-h5-fontSize;
+  font-weight: $typography-h5-fontWeight;
+  margin: $spacing-4 0 $spacing-4 0;
+}
+
+.subtitle {
+  font-family: $typography-h5-fontFamily; // TODO create typography mixin
+  font-size: $typography-subtitle1-fontSize;
+  font-weight: $typography-h5-fontWeight;
+  color: $palette-grey-500;
+  margin: 0 0 $spacing-3 0;
+}
+
+.measurewrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.regionlevelselect {
+  width: 400px;
+  flex: 1 0 auto;
+}
+
+.combinationswrapper {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-left: 36px;
+}
