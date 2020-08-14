@@ -1,6 +1,6 @@
 {
   "name": "@datenguide/explorables",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Cookbook to make statistics experienced haptically, visually and playfully.  Coming soon.",
   "watch": {
     "build": "{components,lib}/*.js"
