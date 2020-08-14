@@ -1,0 +1,226 @@
+{
+  "schema": {
+    "fields": [
+      {
+        "name": "index",
+        "type": "integer"
+      },
+      {
+        "name": "region_id",
+        "type": "string"
+      },
+      {
+        "name": "year",
+        "type": "string"
+      },
+      {
+        "name": "measure",
+        "type": "string"
+      },
+      {
+        "name": "value",
+        "type": "integer"
+      },
+      {
+        "name": "statistic",
+        "type": "string"
+      }
+    ],
+    "primaryKey": ["index"],
+    "pandas_version": "0.20.0"
+  },
+  "data": [
+    {
+      "index": 0,
+      "region_id": "DG",
+      "year": "1995",
+      "measure": "GEM001",
+      "value": 14626,
+      "statistic": "11111"
+    },
+    {
+      "index": 1,
+      "region_id": "DG",
+      "year": "1996",
+      "measure": "GEM001",
+      "value": 14561,
+      "statistic": "11111"
+    },
+    {
+      "index": 2,
+      "region_id": "DG",
+      "year": "1997",
+      "measure": "GEM001",
+      "value": 14302,
+      "statistic": "11111"
+    },
+    {
+      "index": 3,
+      "region_id": "DG",
+      "year": "1998",
+      "measure": "GEM001",
+      "value": 14197,
+      "statistic": "11111"
+    },
+    {
+      "index": 4,
+      "region_id": "DG",
+      "year": "1999",
+      "measure": "GEM001",
+      "value": 13854,
+      "statistic": "11111"
+    },
+    {
+      "index": 5,
+      "region_id": "DG",
+      "year": "2000",
+      "measure": "GEM001",
+      "value": 13837,
+      "statistic": "11111"
+    },
+    {
+      "index": 6,
+      "region_id": "DG",
+      "year": "2001",
+      "measure": "GEM001",
+      "value": 13416,
+      "statistic": "11111"
+    },
+    {
+      "index": 7,
+      "region_id": "DG",
+      "year": "2002",
+      "measure": "GEM001",
+      "value": 13148,
+      "statistic": "11111"
+    },
+    {
+      "index": 8,
+      "region_id": "DG",
+      "year": "2003",
+      "measure": "GEM001",
+      "value": 12631,
+      "statistic": "11111"
+    },
+    {
+      "index": 9,
+      "region_id": "DG",
+      "year": "2004",
+      "measure": "GEM001",
+      "value": 12431,
+      "statistic": "11111"
+    },
+    {
+      "index": 10,
+      "region_id": "DG",
+      "year": "2005",
+      "measure": "GEM001",
+      "value": 12340,
+      "statistic": "11111"
+    },
+    {
+      "index": 11,
+      "region_id": "DG",
+      "year": "2006",
+      "measure": "GEM001",
+      "value": 12312,
+      "statistic": "11111"
+    },
+    {
+      "index": 12,
+      "region_id": "DG",
+      "year": "2007",
+      "measure": "GEM001",
+      "value": 12263,
+      "statistic": "11111"
+    },
+    {
+      "index": 13,
+      "region_id": "DG",
+      "year": "2008",
+      "measure": "GEM001",
+      "value": 12227,
+      "statistic": "11111"
+    },
+    {
+      "index": 14,
+      "region_id": "DG",
+      "year": "2009",
+      "measure": "GEM001",
+      "value": 11993,
+      "statistic": "11111"
+    },
+    {
+      "index": 15,
+      "region_id": "DG",
+      "year": "2010",
+      "measure": "GEM001",
+      "value": 11442,
+      "statistic": "11111"
+    },
+    {
+      "index": 16,
+      "region_id": "DG",
+      "year": "2011",
+      "measure": "GEM001",
+      "value": 11292,
+      "statistic": "11111"
+    },
+    {
+      "index": 17,
+      "region_id": "DG",
+      "year": "2012",
+      "measure": "GEM001",
+      "value": 11220,
+      "statistic": "11111"
+    },
+    {
+      "index": 18,
+      "region_id": "DG",
+      "year": "2013",
+      "measure": "GEM001",
+      "value": 11161,
+      "statistic": "11111"
+    },
+    {
+      "index": 19,
+      "region_id": "DG",
+      "year": "2014",
+      "measure": "GEM001",
+      "value": 11116,
+      "statistic": "11111"
+    },
+    {
+      "index": 20,
+      "region_id": "DG",
+      "year": "2015",
+      "measure": "GEM001",
+      "value": 11092,
+      "statistic": "11111"
+    },
+    {
+      "index": 21,
+      "region_id": "DG",
+      "year": "2016",
+      "measure": "GEM001",
+      "value": 11059,
+      "statistic": "11111"
+    },
+    {
+      "index": 22,
+      "region_id": "DG",
+      "year": "2017",
+      "measure": "GEM001",
+      "value": 11054,
+      "statistic": "11111"
+    },
+    {
+      "index": 23,
+      "region_id": "DG",
+      "year": "2018",
+      "measure": "GEM001",
+      "value": 11014,
+      "statistic": "11111"
+    }
+  ]
+}
