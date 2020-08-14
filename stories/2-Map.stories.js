@@ -1,5 +1,5 @@
 import React from 'react'
-import Map from '../components/Map'
+import MapDemo from '../components/MapDemo'
 
 export default {
   title: 'Map',
@@ -7,5 +7,5 @@ export default {
 }
 
 export const map = () => (
-  <Map mapboxApiAccessToken={process.env.STORYBOOK_MAPBOX_TOKEN} />
+  <MapDemo mapboxApiAccessToken={process.env.STORYBOOK_MAPBOX_TOKEN} />
 )

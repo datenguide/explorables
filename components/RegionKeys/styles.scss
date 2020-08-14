@@ -1,12 +1,11 @@
 @import 'lib/styles/mui-theme.scss';
 
 $red: #f26c6f;
-$grey:  #e5e5e5;
-
+$grey: #e5e5e5;
 
 .root {
   padding: $spacing-4;
-  background:$grey;
+  background: $grey;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,7 +105,6 @@ $grey:  #e5e5e5;
   width: 22%;
 }
 
-
 .nutsHierarchyIdSpan3 {
   width: 37%;
 }
@@ -118,7 +116,6 @@ $grey:  #e5e5e5;
 .nutsHierarchyIdSpan8 {
   width: 100%;
 }
-
 
 .nutsLabel {
   display: flex;
