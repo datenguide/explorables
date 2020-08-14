@@ -5,5 +5,15 @@ import ShapeLayer from './ShapeLayer'
 import Map from './Map'
 import SimpleMap from './SimpleMap'
 import TextMarker from './TextMarker'
+import RegionKeys from './RegionKeys'
 
-export { Button, MapTooltip, MapNav, ShapeLayer, Map, SimpleMap, TextMarker }
+export {
+  Button,
+  MapTooltip,
+  MapNav,
+  ShapeLayer,
+  Map,
+  RegionKeys,
+  SimpleMap,
+  TextMarker,
+}
